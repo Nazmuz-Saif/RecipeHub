@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}
+Edit Recipe
+{% endblock %}
+{% block content %}
+
+<style>
+
+    .form-container{
+        max-width: 750px;
+        margin: 50px auto;
+        padding: 35px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .form-title{
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #dc3545;
+        margin-bottom: 30px;
+    }
+
+    .form-group{
+        margin-bottom: 18px;
+    }
+
+    label{
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    input, textarea, select{
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+
+    textarea{
+        min-height: 120px;
+        resize: none;
+    }
+
+    input:focus, textarea:focus{
+        border-color: #dc3545;
+        box-shadow: 0 0 5px rgba(220,53,69,0.3);
+    }
+
+    .btn-submit{
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+</style>
+
+
+<div class="container">
+
+    <div class="form-container">
+
+        <div class="form-title">
+            🍲 Add / Update Recipe
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div class="form-group">
+                <label>Recipe Name</label>
+                {{ form.name }}
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label>Description</label>
+                {{ form.description }}
+            </div>
+
+            <!-- Ingredients -->
+            <div class="form-group">
+                <label>Ingredients</label>
+                {{ form.ingredients }}
+            </div>
+
+            <!-- Image -->
+            <div class="form-group">
+                <label>Recipe Image</label>
+                {{ form.image }}
+            </div>
+
+            <button type="submit" class="btn btn-success btn-submit">
+                Save Recipe
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

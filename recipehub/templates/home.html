@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* Hero Section */
+    .hero-section{
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 30px;
+    }
+
+    .hero-content h1{
+        font-size: 55px;
+        font-weight: bold;
+    }
+
+    .hero-content p{
+        font-size: 20px;
+    }
+
+    /* Section Title */
+    .section-title{
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        color: #dc3545;
+    }
+
+    /* Recipe Card */
+    .recipe-card{
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: 0.4s ease;
+    }
+
+    .recipe-card:hover{
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .recipe-image{
+        height: 250px;
+        object-fit: cover;
+        transition: 0.4s;
+    }
+
+    .recipe-card:hover .recipe-image{
+        transform: scale(1.05);
+    }
+
+    .view-btn{
+        width: 100%;
+        border-radius: 10px;
+    }
+
+</style>
+
+
+<div class="container">
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+
+        <div class="hero-content">
+
+            <h1>🍲 RecipeHub</h1>
+
+            <p>Discover & Share Delicious Homemade Recipes</p>
+
+            <a href="{% url 'view_recipe' %}" class="btn btn-danger btn-lg mt-3">
+                Explore Recipes
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Latest Upload Section -->
+    <h2 class="section-title">
+        Latest Uploaded Recipes
+    </h2>
+
+    <div class="row">
+
+        {% for i in recipes %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card recipe-card shadow h-100">
+
+                <!-- Image -->
+                <img src="{{ i.image.url }}"
+                     class="card-img-top recipe-image"
+                     alt="{{ i.name }}">
+
+                <!-- Body -->
+                <div class="card-body">
+
+                    <h4 class="text-danger">
+                        {{ i.name }}
+                    </h4>
+
+                    <p>
+                        {{ i.description|truncatewords:15 }}
+                    </p>
+
+                    <small class="text-muted">
+                        Uploaded: {{ i.created_at|date:"d M Y, h:i A" }}
+                    </small>
+
+                    <!-- FIXED BUTTON (NOW MODAL) -->
+                    <button class="btn btn-dark mt-3 view-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#recipeModal{{ i.id }}">
+                        View Recipe
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MODAL -->
+        <div class="modal fade" id="recipeModal{{ i.id }}" tabindex="-1">
+
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger">
+                            {{ i.name }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row">
+
+                            <!-- LEFT IMAGE -->
+                            <div class="col-md-5">
+                                <img src="{{ i.image.url }}"
+                                     class="img-fluid rounded"
+                                     style="height: 300px; object-fit: cover;">
+                            </div>
+
+                            <!-- RIGHT DETAILS -->
+                            <div class="col-md-7">
+
+                                <h5 class="text-danger">{{ i.name }}</h5>
+
+                                <hr>
+
+                                <h6>Description</h6>
+                                <p>{{ i.description }}</p>
+
+                                <h6>Ingredients</h6>
+                                <p>{{ i.ingredients }}</p>
+
+                                <h6>Instructions</h6>
+                                <p>{{ i.instructions }}</p>
+
+                                <small class="text-muted">
+                                    {{ i.created_at }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

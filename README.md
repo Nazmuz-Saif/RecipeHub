@@ -1,25 +1,35 @@
 # 🍳 RecipeHub
 
-> A recipe discovery and sharing web app built with vanilla JavaScript — search, filter, and explore recipes with a clean modern UI.
+> A simple Django CRUD web app built as a class assignment — users can **Create, Read, Update, and Delete** recipes directly from the web interface without any admin panel.
 
-🔗 **Live Demo:** *(Add your GitHub Pages / deployment link here)*
+---
+
+## 🎯 Purpose
+
+Built during a university Django lab session to practice:
+- Django MVT architecture
+- Model creation & migrations
+- URL routing & views
+- Template rendering
+- Full CRUD operations via web interface
 
 ---
 
 ## ✨ Features
 
-- 🔍 **Search Recipes** — Find recipes by name or ingredient
-- 🏷️ **Filter by Category** — Browse by cuisine, meal type, or dietary preference
-- 📱 **Responsive Design** — Works on mobile, tablet, and desktop
-- ⚡ **Fast & Lightweight** — Pure JavaScript, no heavy frameworks
+- ➕ Add new recipes from the web page
+- 📋 View all recipes in a list
+- ✏️ Edit/Update existing recipes
+- 🗑️ Delete recipes
+- 🗄️ SQLite database (dev)
 
 ---
 
 ## 🛠️ Tech Stack
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 
 ---
 
@@ -28,30 +38,19 @@
 ```bash
 # Clone the repository
 git clone https://github.com/Nazmuz-Saif/RecipeHub.git
-
-# Open in browser
 cd RecipeHub
-open index.html
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start server
+python manage.py runserver
 ```
 
----
-
-## 📁 Project Structure
-
-```
-RecipeHub/
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    └── images/
-```
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first.
+Then open `http://127.0.0.1:8000` in your browser.
 
 ---
 
@@ -59,4 +58,5 @@ Pull requests are welcome! For major changes, please open an issue first.
 
 **Nazmuz Saif**
 🌐 [nazmuzsaif.onrender.com](https://nazmuzsaif.onrender.com)
-🐙 [github.com/Nazmuz-Saif](https://github.com/Nazmuz-Saif)
+💼 [LinkedIn](https://www.linkedin.com/in/nazmuzsaif/)
+🐙 [GitHub](https://github.com/Nazmuz-Saif)

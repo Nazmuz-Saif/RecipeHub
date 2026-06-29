@@ -2,6 +2,8 @@
 
 > A simple Django CRUD web app built as a class assignment — users can **Create, Read, Update, and Delete** recipes directly from the web interface without any admin panel.
 
+🔗 **Deployed on Render** *(currently suspended)*
+
 ---
 
 ## 🎯 Purpose
